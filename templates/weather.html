@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Weather Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .weather-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+        .weather-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .weather-icon {
+            font-size: 5rem;
+            color: #4a90e2;
+        }
+        .weather-temp {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .weather-condition {
+            font-size: 1.5rem;
+            color: #666;
+        }
+        .weather-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h1 class="weather-title">Weather Forecast</h1>
+        <form method="get" class="search-box">
+            <input type="text" name="city" class="form-control" placeholder="Enter city name" required>
+            <button type="submit" class="btn btn-primary mt-2 w-100">Get Weather</button>
+        </form>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% else %}
+            <div class="weather-card">
+                <i class="wi wi-owm-{{ icon }} weather-icon"></i>
+                <p class="weather-temp">{{ temperature }}°C</p>
+                <p class="weather-condition text-capitalize">{{ weather_condition }}</p>
+                <p class="text-muted">City: {{ city }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
